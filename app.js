@@ -9,7 +9,6 @@ const routes = require('./src/routes');
 const redis = require('redis');
 const client = redis.createClient();
 const multer = require('multer');
-// const upload = multer();
 
 client.on('error', (err) => {
 	console.log('error' + err);
