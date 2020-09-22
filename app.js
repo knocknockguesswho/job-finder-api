@@ -21,9 +21,6 @@ database.connect((err) => {
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(upload.array()); 
-// app.use(express.static('public'));
-
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use((req, res, next) => {
