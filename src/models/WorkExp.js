@@ -6,7 +6,7 @@ module.exports = {
 		return new Promise((resolve, reject)=>{
 			connection.query(query.insertWorkExp, data, (error, result)=>{
 				if(error){
-					return reject(error)
+					return reject(error);
 				}
 				resolve(result);
 			});
@@ -16,7 +16,7 @@ module.exports = {
 		return new Promise((resolve, reject)=>{
 			connection.query(query.deleteWorkExp, id, (error, result)=>{
 				if(error){
-					return reject(error)
+					return reject(error);
 				}
 				resolve(result);
 			});
@@ -26,7 +26,7 @@ module.exports = {
 		return new Promise((resolve, reject)=>{
 			connection.query(query.editWorkExp, [data, id], (error, result)=>{
 				if(error){
-					return reject(error)
+					return reject(error);
 				}
 				resolve(result);
 			});
@@ -36,13 +36,9 @@ module.exports = {
 		return new Promise((resolve, reject)=>{
 			connection.query(query.showWorkExp, user_id, (error, result)=>{
 				if(error){
-					return reject(error)
+					return reject(error);
 				}
-				const response = {
-					id: result.insertId,
-					...result
-				}
-				resolve(response);
+				resolve(result);
 			})
 		})
 	}

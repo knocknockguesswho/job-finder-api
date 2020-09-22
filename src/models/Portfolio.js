@@ -8,7 +8,11 @@ module.exports = {
 				if (error) {
 					return reject(error);
 				}
-				resolve(result);
+				const response = {
+					message: 'Your portfolio is successfully updated',
+					result
+				}
+				resolve(response);
 			});
 		});
 	},
@@ -18,7 +22,11 @@ module.exports = {
 				if (error) {
 					return reject(error);
 				}
-				resolve(result);
+				const response = {
+					message: 'Your portfolio has been saved',
+					result
+				}
+				resolve(response);
 			});
 		});
 	},
@@ -28,21 +36,25 @@ module.exports = {
 				if(error){
 					return reject(error)
 				}
-				resolve(result);
+				const response = {
+					message: 'Your portfolio has been deleted',
+					result
+				}
+				resolve(response);
 			});
 		});
 	},
-	ShowPortfolioModel: (user_id) =>{
+	ShowPortfolioModel: (user_id, limit, page) =>{
 		return new Promise((resolve, reject)=>{
-			connection.query(query.showPortfolio, user_id, (error, result)=>{
+			const limitInt = parseInt(limit)
+			const pageInt = parseInt(page)
+			connection.query(query.showPortfolio, [user_id, limitInt, pageInt], (error, result)=>{
 				if(error){
 					return reject(error)
 				}
-				const response = {
-					id: result.insertId,
-					...result
-				}
-				resolve(response);
+				const pagination = (page/limit)+1
+				const response = {...result, page: pagination}
+				resolve(result);
 			})
 		})
 	},

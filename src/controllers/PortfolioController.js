@@ -19,7 +19,7 @@ module.exports = {
 			image !== null ? (data.app_image = image) : null;
 			const result = await EditPortfolioModel(data, id);
 			fs.unlinkSync(`./src/images/portfolio/${oldImage}`)
-			return response(res, true, `Portfolio is successfuly updated`, 200);
+			return response(res, true, result, 200);
 		} catch(error){
 			console.log(error);
 			return response(res, false, `Internal Server Error`, 500);
@@ -31,7 +31,7 @@ module.exports = {
 			const image = req.file ? req.file.filename : null;
 			image !== null ? (data.app_image = image) : null;
 			const result = await InsertPortfolioModel(data);
-			return response(res, true, `Your portfolio has been saved`, 200);
+			return response(res, true, result, 200);
 		} catch(error){
 			console.log(error);
 			return response(res, false, `Internal Server Error`, 500);
@@ -41,7 +41,7 @@ module.exports = {
     try{
       const id = req.params.id;
       const result = await DeletePortfolioModel(id);
-      return response(res, true, `Your portfolio has been deleted`, 200);
+      return response(res, true, result, 200);
     } catch(error){
       console.log(error);
       return response(res, false, `Internal Server Error`, 500);
@@ -50,7 +50,9 @@ module.exports = {
 	ShowPortfolio: async (req, res) =>{
 		try{
 			const user_id = req.params.user_id;
-			const result = await ShowPortfolioModel(user_id);
+			const limit = req.query.limit || 7;
+			const page = req.query.page - 1 || 0;
+			const result = await ShowPortfolioModel(user_id, limit, page);
 			return response(res, true, result, 200);
 		} catch(error){
 			console.log(error);

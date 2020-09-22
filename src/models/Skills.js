@@ -28,11 +28,7 @@ module.exports = {
 				if(error){
 					return reject(error)
 				}
-				const response = {
-					id: result.insertId,
-					...result
-				}
-				resolve(response);
+				resolve(result);
 			})
 		})
 	}

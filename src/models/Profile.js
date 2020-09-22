@@ -26,7 +26,7 @@ module.exports = {
 		return new Promise((resolve, reject)=>{
 			connection.query(query.insertProfile, [data, id], (error, result)=>{
 				if(error){
-					return reject(error)
+					return reject(error);
 				}
 				resolve(result);
 			});
@@ -36,13 +36,9 @@ module.exports = {
 		return new Promise((resolve, reject)=>{
 			connection.query(query.showProfile, id, (error, result)=>{
 				if(error){
-					return reject(error)
+					return reject(error);
 				}
-				const response = {
-					id: result.insertId,
-					...result
-				}
-				resolve(response);
+				resolve(result);
 			})
 		})
 	}

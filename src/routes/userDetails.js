@@ -5,7 +5,7 @@ const{
 } = require('../controllers/UserDetailsController')
 const router = express.Router();
 
-router.get('/:sortBy/:page', ShowDetails); //name, skill, domicile, job_preference
+router.get('/', ShowDetails); //name, skill, domicile, job_preference
 
 
 module.exports = router;
