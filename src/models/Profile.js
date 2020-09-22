@@ -8,7 +8,11 @@ module.exports = {
 				if (error) {
 					return reject(error);
 				}
-				resolve(result);
+				const response = {
+					fieldCount: result.fieldCount,
+					affectedRows: result.affectedRows
+				}
+				resolve(response);
 			});
 		});
 	},
@@ -28,7 +32,11 @@ module.exports = {
 				if(error){
 					return reject(error);
 				}
-				resolve(result);
+				const response = {
+					fieldCount: result.fieldCount,
+					affectedRows: result.affectedRows
+				}
+				resolve(response);
 			});
 		});
 	},
@@ -38,7 +46,7 @@ module.exports = {
 				if(error){
 					return reject(error);
 				}
-				resolve(result);
+				resolve(...result);
 			})
 		})
 	}

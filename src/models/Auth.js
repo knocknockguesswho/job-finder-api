@@ -22,7 +22,7 @@ module.exports = {
         if (error) {
           return reject(error);
         }
-        resolve(result);
+        resolve(...result);
       });
     });
   }

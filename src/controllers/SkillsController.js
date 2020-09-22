@@ -11,7 +11,7 @@ module.exports = {
       const data = req.body;
       const skill = req.body.skill
       const result = await InsertSkillsModel(data);
-      return response(res, true, `${skill} is successfuly added to the list`, 200);
+      return response(res, true, `${skill} is successfuly added to the list`, result, 200);
     } catch (error){
       console.log(error)
       return response(res, false, 'Internal Server Error', 500);
@@ -21,7 +21,7 @@ module.exports = {
     try{
       const id = req.params.id;
       const result = await DeleteSkillsModel(id);
-      return response(res, true, `Skill is successfuly deleted`, 200);
+      return response(res, true, `Skill is successfuly deleted`, result, 200);
     } catch (error){
       console.log(error)
       return response(res, false, 'Internal Server Error', 500);
@@ -31,7 +31,7 @@ module.exports = {
     try{
       const user_id = req.params.user_id;
       const result = await ShowSkillsModel(user_id);
-      return response(res, true, result, 200);
+      return response(res, true, '', result, 200);
     } catch (error){
       console.log(error)
       return response(res, false, 'Internal Server Error', 500);

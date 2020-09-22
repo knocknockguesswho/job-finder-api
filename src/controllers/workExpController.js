@@ -13,7 +13,7 @@ module.exports = {
       const position = req.body.position
       const company_name = req.body.company_name
       const result = await InsertWorkExpModel(data);
-      return response(res, true, `${position} at ${company_name} is successfuly added to the list`, 200);
+      return response(res, true, `${position} at ${company_name} is successfuly added to the list`, result, 200);
     } catch (error){
       console.log(error)
       return response(res, false, 'Internal Server Error', 500);
@@ -23,7 +23,7 @@ module.exports = {
     try{
       const id = req.params.id;
       const result = await DeleteWorkExpModel(id);
-      return response(res, true, `Work Experience is successfuly deleted`, 200);
+      return response(res, true, `Work Experience is successfuly deleted`, result, 200);
     } catch (error){
       console.log(error)
       return response(res, false, 'Internal Server Error', 500);
@@ -34,7 +34,7 @@ module.exports = {
       const data = req.body;
       const id = req.params.id;
       const result = await EditWorkExpModel(data, id);
-      return response(res, true, `Work Experience is successfuly edited`, 200);
+      return response(res, true, `Work Experience is successfuly edited`, result, 200);
     } catch (error){
       console.log(error)
       return response(res, false, 'Internal Server Error', 500);
@@ -44,7 +44,7 @@ module.exports = {
     try{
       const user_id = req.params.user_id;
       const result = await ShowWorkExpModel(user_id);
-      return response(res, true, result, 200);
+      return response(res, true, '', result, 200);
     } catch (error){
       console.log(error)
       return response(res, false, 'Internal Server Error', 500);

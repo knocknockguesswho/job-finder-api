@@ -9,11 +9,7 @@ module.exports = {
           console.log(error)
           reject(error)
         }
-        const response = {
-          id: result.inserId,
-          ...result,
-        };
-        resolve(response);
+        resolve(result);
       });
     });
   }

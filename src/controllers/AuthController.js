@@ -23,9 +23,9 @@ module.exports = {
 				if (emailCheck.length === 0) {
 					const result = await Register(data);
 					delete result.password;
-					return response(res, true, result, 200);
+					return response(res, true, 'Register Success', result, 200);
 				}
-				return response(res, false, 'Email has been registered', 400);
+				return response(res, false, 'Email has been registered', result, 400);
 			}
 			let errorMessage = validation.error.details[0].message;
 			errorMessage = errorMessage.replace(/"/g, '');
@@ -50,7 +50,7 @@ module.exports = {
 						// create token
 						const token = createToken(emailCheck, process.env.JWT_KEY, '24h');
 						emailCheck[0].token = token;
-						return response(res, true, emailCheck, 200);
+						return response(res, true, 'Login Success', emailCheck, 200);
 					}
 					return response(res, false, 'Password wrong', 400);
 				}
@@ -79,7 +79,7 @@ module.exports = {
 					token: token,
 					refreeshToken: RefreshToken,
 				};
-				return response(res, true, data, 200);
+				return response(res, true, 'Refresh Token Success', data, 200);
 			}
 			return response(res, false, 'Token not found', 400);
 		} catch (error) {

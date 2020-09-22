@@ -9,8 +9,8 @@ module.exports = {
 					return reject(error);
 				}
 				const response = {
-					message: 'Your portfolio is successfully updated',
-					result
+					fieldCount: result.fieldCount,
+					affectedRows: result.affectedRows
 				}
 				resolve(response);
 			});
@@ -23,8 +23,8 @@ module.exports = {
 					return reject(error);
 				}
 				const response = {
-					message: 'Your portfolio has been saved',
-					result
+					fieldCount: result.fieldCount,
+					affectedRows: result.affectedRows
 				}
 				resolve(response);
 			});
@@ -37,8 +37,8 @@ module.exports = {
 					return reject(error)
 				}
 				const response = {
-					message: 'Your portfolio has been deleted',
-					result
+					fieldCount: result.fieldCount,
+					affectedRows: result.affectedRows
 				}
 				resolve(response);
 			});
